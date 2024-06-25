@@ -83,8 +83,12 @@ const markup = images
 
 list.insertAdjacentHTML("beforeend", markup);
 
-const img = document.querySelector(".gallery-image");
-img.addEventListener("click", (event) => {
+const instance = basicLightbox.create(
+  `<img src = "https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg"></img>`
+);
+
+document.querySelector(".gallery-image").addEventListener("click", (event) => {
   event.preventDefault();
   console.log("to powinno dzialac");
+  instance.show;
 });
