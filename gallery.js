@@ -83,12 +83,19 @@ const markup = images
 
 list.insertAdjacentHTML("beforeend", markup);
 
-const instance = basicLightbox.create(
-  `<img src = "https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg"></img>`
-);
+const instance = basicLightbox.create(`<img src="" width="1280">`);
 
-document.querySelector(".gallery-image").addEventListener("click", (event) => {
+document.querySelector(".gallery").addEventListener("click", (event) => {
   event.preventDefault();
-  console.log("to powinno dzialac");
-  instance.show;
+  const dataSource = event.target.dataset.source;
+  if (!dataSource) return;
+  else console.log(dataSource);
+  instance.element().querySelector("img").src = dataSource;
+  instance.show();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.keyCode === 27 && instance.visible() === true) {
+    instance.close();
+  }
 });
